@@ -12,3 +12,10 @@ C:\Users\Admin\Desktop\pp2\LAB1 Week1\Task 2\ConsoleApp2\obj\Debug\ConsoleApp2.c
 C:\Users\Admin\Desktop\pp2\LAB1 Week1\Task 2\ConsoleApp2\obj\Debug\ConsoleApp2.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Desktop\pp2\LAB1 Week1\Task 2\ConsoleApp2\obj\Debug\ConsoleApp2.exe
 C:\Users\Admin\Desktop\pp2\LAB1 Week1\Task 2\ConsoleApp2\obj\Debug\ConsoleApp2.pdb
+C:\Users\Admin\Documents\1year\PP2\Week1\Task 2\ConsoleApp2\bin\Debug\ConsoleApp2.exe.config
+C:\Users\Admin\Documents\1year\PP2\Week1\Task 2\ConsoleApp2\bin\Debug\ConsoleApp2.exe
+C:\Users\Admin\Documents\1year\PP2\Week1\Task 2\ConsoleApp2\bin\Debug\ConsoleApp2.pdb
+C:\Users\Admin\Documents\1year\PP2\Week1\Task 2\ConsoleApp2\obj\Debug\ConsoleApp2.csprojAssemblyReference.cache
+C:\Users\Admin\Documents\1year\PP2\Week1\Task 2\ConsoleApp2\obj\Debug\ConsoleApp2.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\1year\PP2\Week1\Task 2\ConsoleApp2\obj\Debug\ConsoleApp2.exe
+C:\Users\Admin\Documents\1year\PP2\Week1\Task 2\ConsoleApp2\obj\Debug\ConsoleApp2.pdb

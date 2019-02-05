@@ -35,7 +35,7 @@ namespace ConsoleApp2
         }
         static void Main(string[] args)
         {
-            Student student = new Student("Ayana", "18BD110504");
+            Student student = new Student("Ayana", "18BD110504");  // sozdau ekzemplyar klassa Student
             Console.WriteLine(student);
             student.Incr();
             Console.ReadKey();

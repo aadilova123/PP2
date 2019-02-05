@@ -8,9 +8,16 @@ namespace ConsoleApp1
 {
     class Program
     {
+        public static void  Dupl(int x)
+        {
+            for(int i = 0; i < 2; i++)
+            {
+                Console.Write(x + " ");
+            }
+        }
         static void Main(string[] args)
         {
-            string line1 = Console.ReadLine();  // schityvaet stroky 
+            string line1 = Console.ReadLine();  // schityvaet stroky v vide string
             string line2 = Console.ReadLine();
 
             int n = int.Parse(line1);    // perevela string v integer
@@ -19,13 +26,10 @@ namespace ConsoleApp1
             for(int i = 0; i < numStr.Length; ++i)   // probegaus' po massivy
             {
                 int x = int.Parse(numStr[i]);  // kazhdyi element perevela v type int s pomow'u Parse
-                for(int a = 0; a < 2; ++a)
-                {
-                    Console.Write(x + ""); 
-                }
+                                               
+                Program.Dupl(x); // use method to duplicate numbers
                 
             }
-            Console.ReadKey();
         }
     }
 }

@@ -10,6 +10,7 @@ namespace Task1_lab1
     {
         public static bool Prime(int n)
         {
+            if (n == 1 || n == 0) return false;
             for (int i = 2; i * i <= n; i++)
             {
                 if (n % i == 0) return false;
@@ -26,24 +27,19 @@ namespace Task1_lab1
             int n = int.Parse(line1);  // 1 stroky perevela v tip integer
             string[] s = line2.Split(); // sozdau massiv s , tam razdelila 2 stroky cherez probely
             List<int> vs = new List<int>(); // sozdala novyi list iz intov
-            List<int> vs1 = new List<int>();
+
             for (int i = 0; i < s.Length; ++i)
             {
-                int x = int.Parse(s[i]);  // perevratila kazhdyi element massiva v int
-                vs.Add(x);
-            }// pomestila vse elementy v list intov
-                for (int k = 0; k < vs.Count; ++k)
+                int x = int.Parse(s[i]);  // probegaus' po massivu i prevraschau kazhdyi element massiva v int
+                if(Prime(x)==true)       // check for prime or not 
                 {
-                    // probegayus' i proverayu elementy na is prime or not
-                    if (Prime(vs[k]) == true && vs[k] != 1)
-                    {
-                        vs1.Add(vs[k]);
-                    }  
+                    vs.Add(x);
                 }
-            Console.WriteLine(vs1.Count);
-            for (int m = 0; m < vs1.Count; m++)
+            }
+            Console.WriteLine(vs.Count);
+            for(int j = 0; j < vs.Count; j++)
             {
-                Console.Write(vs1[m]+ " ");
+                Console.Write(vs[j] + " ");
             }
         }
     }
