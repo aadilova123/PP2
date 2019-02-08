@@ -1,0 +1,1 @@
+Create a file in the directory path, then copy it to the directory path1 and delete the original one
