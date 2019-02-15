@@ -10,18 +10,16 @@ namespace ConsoleApp2
     class Program
 
     {
-        public static void Showdinfo(DirectoryInfo directoryInfo, int cursor)
+        public static void Showdinfo(DirectoryInfo dir, int cursor)
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            FileInfo[] files = directoryInfo.GetFiles();
-            DirectoryInfo[] directories = directoryInfo.GetDirectories();
-            FileSystemInfo[] fsi = new FileSystemInfo[files.Length + directories.Length];
-            directories.CopyTo(fsi, 0);
-            files.CopyTo(fsi, directories.Length);
+            FileSystemInfo[] fsi = new FileSystemInfo[dir.GetFiles().Length +dir.GetDirectories().Length]; // create an array FileSystemInfo with information about files and directiries in dir
+            dir.GetDirectories().CopyTo(fsi, 0);
+            dir.GetFiles().CopyTo(fsi, dir.GetDirectories().Length);// Kopiruet - CopyTo
 
 
-            for (int i = 0; i < fsi.Length; i++)
+            for (int i = 0; i < fsi.Length; i++) // probegaus' po massivu
             {
                 if (i == cursor)
                 {
@@ -31,7 +29,7 @@ namespace ConsoleApp2
                 {
                     Console.BackgroundColor = ConsoleColor.Black;
                 }
-                if (fsi[i].GetType() == typeof(DirectoryInfo))
+                if (fsi[i].GetType() == typeof(DirectoryInfo)) 
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                 }
@@ -45,15 +43,13 @@ namespace ConsoleApp2
         }
         static void Main(string[] args)
         {
-            DirectoryInfo directoryInfo = new DirectoryInfo(@"C:\Users\Admin\Desktop");
+            DirectoryInfo dir = new DirectoryInfo(@"C:\Users\Admin\Desktop");
             int cursor = 0;
-            int n = directoryInfo.GetFileSystemInfos().Length;
-            Showdinfo(directoryInfo, cursor);
-            FileInfo[] files = directoryInfo.GetFiles();
-            DirectoryInfo[] directory = directoryInfo.GetDirectories();
-            FileSystemInfo[] fsi = new FileSystemInfo[files.Length + directory.Length];
-            directory.CopyTo(fsi, 0);
-            files.CopyTo(fsi, directory.Length);
+            int n = dir.GetFileSystemInfos().Length;// n - number of files and directories 
+            Showdinfo(dir, cursor);
+            FileSystemInfo[] fsi = new FileSystemInfo[dir.GetFiles().Length + dir.GetDirectories().Length]; 
+            dir.GetDirectories().CopyTo(fsi, 0);
+            dir.GetFiles().CopyTo(fsi, dir.GetDirectories().Length);// Kopiruet - CopyTo
 
             while (true)
             {
@@ -78,9 +74,9 @@ namespace ConsoleApp2
                 {
                     if (fsi[cursor].GetType() == typeof(DirectoryInfo))
                     {
-                        directoryInfo = new DirectoryInfo(fsi[cursor].FullName);
+                        dir = new DirectoryInfo(fsi[cursor].FullName);
                         cursor = 0;
-                        n = directoryInfo.GetFileSystemInfos().Length;
+                        n = dir.GetFileSystemInfos().Length;
                     }
                     else
                     {
@@ -96,11 +92,11 @@ namespace ConsoleApp2
                 }
                 if (consoleKeyInfo.Key == ConsoleKey.Escape)
                 {
-                    if (directoryInfo.Parent != null)
+                    if (dir.Parent != null)
                     {
-                        directoryInfo = directoryInfo.Parent;
+                        dir = dir.Parent;
                         cursor = 0;
-                        n = directoryInfo.GetFileSystemInfos().Length;
+                        n = dir.GetFileSystemInfos().Length;
                     }
                     else
                     {
@@ -137,7 +133,7 @@ namespace ConsoleApp2
                     if (fsi[cursor].GetType() == typeof(DirectoryInfo))
                     {
                         Console.Clear();
-                        string s = Console.ReadLine();
+                        string s = Console.ReadLine(); // name that i want to rename
                         string Name = fsi[cursor].Name;
                         string fName = fsi[cursor].FullName;
                         string newpath = "";
@@ -146,7 +142,7 @@ namespace ConsoleApp2
                             newpath += fName[i];
                         }
                         newpath = newpath + s;
-                        Directory.Move(fName, newpath);
+                        Directory.Move(fName, newpath); // peremesh'aet fullname v newpath
                     }
                     else
                     {
@@ -164,7 +160,7 @@ namespace ConsoleApp2
                     }
 
                 }
-                Showdinfo(directoryInfo, cursor);
+                Showdinfo(dir, cursor);
 
             }
             Console.ReadKey();
