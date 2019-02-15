@@ -65,7 +65,7 @@ namespace ConsoleApp2
                 if (consoleKeyInfo.Key == ConsoleKey.UpArrow)
                 {
                     cursor--;
-                    if (cursor == -1)
+                    if (cursor < 0 )
                     {
                         cursor = n - 1;
                     }
@@ -74,25 +74,25 @@ namespace ConsoleApp2
                 {
                     if (fsi[cursor].GetType() == typeof(DirectoryInfo))
                     {
-                        dir = new DirectoryInfo(fsi[cursor].FullName);
+                        dir = new DirectoryInfo(fsi[cursor].FullName); // if directory then changes repository and open
                         cursor = 0;
                         n = dir.GetFileSystemInfos().Length;
                     }
                     else
                     {
-                        StreamReader st = new StreamReader(fsi[cursor].FullName);
-                        string s = st.ReadToEnd();
+                        StreamReader st = new StreamReader(fsi[cursor].FullName); // reads files
+                        string s = st.ReadToEnd(); 
                         st.Close();
                         Console.BackgroundColor = ConsoleColor.Black;
                         Console.Clear();
-                        Console.WriteLine(s);
+                        Console.WriteLine(s); // write symbols that located in my file
 
                     }
                     Console.ReadKey();
                 }
                 if (consoleKeyInfo.Key == ConsoleKey.Escape)
                 {
-                    if (dir.Parent != null)
+                    if (dir.Parent != null) // if it has parent, i change number of files and directories that i can open 
                     {
                         dir = dir.Parent;
                         cursor = 0;
@@ -106,26 +106,25 @@ namespace ConsoleApp2
                 if (consoleKeyInfo.Key == ConsoleKey.Delete)
                 {
 
-                    if (fsi[cursor].GetType() == typeof(DirectoryInfo))
+                    if (fsi[cursor].GetType() == typeof(DirectoryInfo))//if it's directory which hasnt any files,directories
                     {
                         if (new DirectoryInfo(fsi[cursor].FullName).GetFileSystemInfos().Length == 0)
                         {
-                            Directory.Delete(fsi[cursor].FullName);
+                            Directory.Delete(fsi[cursor].FullName); // then i can easily delete
                         }
                         else
                         {
                             Console.Clear();
-                            Console.WriteLine("Are you sure?");
-                            if (Console.ReadKey().Key == ConsoleKey.Y)
+                            Console.WriteLine("Are you sure?");// if it has smth in itself then i ask a question
+                            if (Console.ReadKey().Key == ConsoleKey.Y) // if yes then i delete
                             {
                                 Directory.Delete(fsi[cursor].FullName, true);
                             }
-
                         }
                     }
                     else
                     {
-                        File.Delete(fsi[cursor].FullName);
+                        File.Delete(fsi[cursor].FullName);// if it's file i easily delete 
                     }
                 }
                 if (consoleKeyInfo.Key == ConsoleKey.R)
