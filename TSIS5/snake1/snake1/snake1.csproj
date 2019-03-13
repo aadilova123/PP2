@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D81018CE-9562-475A-881E-41369B503CAC}</ProjectGuid>
+    <ProjectGuid>{5CD1AE96-DBF3-43FD-B4D2-2D6C43374016}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>snake0</RootNamespace>
-    <AssemblyName>snake0</AssemblyName>
+    <RootNamespace>snake1</RootNamespace>
+    <AssemblyName>snake1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Food.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="GameObject.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
