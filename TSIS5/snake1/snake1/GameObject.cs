@@ -45,12 +45,5 @@ namespace snake1
             }
             return false;
         }
-        public void Serialization(string name)
-        {
-            FileStream fs = new FileStream(name, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            XmlSerializer xml = new XmlSerializer(typeof(GameObject));
-            xml.Serialize(fs, this);
-            fs.Close();
-        }
     }
 }

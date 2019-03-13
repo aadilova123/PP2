@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace snake1
 {
@@ -54,6 +56,13 @@ namespace snake1
                 }
             }
             return false;
+        }
+        public void Serialize(Snake snake)
+        {
+            FileStream fs = new FileStream("snake.xml", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            XmlSerializer xml = new XmlSerializer(typeof(Snake));
+            xml.Serialize(fs, snake);
+            fs.Close();
         }
     }
 }

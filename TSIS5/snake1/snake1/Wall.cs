@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Xml.Serialization;
 
 namespace snake1
 {
@@ -48,6 +49,13 @@ namespace snake1
             else if (gameLevel == GameLevel.Second)
                 gameLevel = GameLevel.Third;
             LoadLevel();
+        }
+        public void Serialize(Wall wall)
+        {
+            FileStream fs = new FileStream("wall.xml", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            XmlSerializer xml = new XmlSerializer(typeof(Wall));
+            xml.Serialize(fs, wall);
+            fs.Close();
         }
     }
 }

@@ -17,11 +17,11 @@ namespace snake1
         public int direction = 0;
         int score = 0;
         int level = 1;
-        int speed = 100;
+        int speed = 130;
         public Game()
         {
             gameObjects = new List<GameObject>();
-            snake = new Snake(20, 10, '0', ConsoleColor.Cyan);
+            snake = new Snake(45, 10, 'O', ConsoleColor.Cyan);
             food = new Food(0, 0, '@', ConsoleColor.Green);
             wall = new Wall('#', ConsoleColor.Magenta);
             wall.LoadLevel();
@@ -39,7 +39,6 @@ namespace snake1
             string s = Console.ReadLine();
             while (isAlive)
             {
-                
                 if (direction == 2)
                 {
                     snake.Move(0, 1);
@@ -61,7 +60,7 @@ namespace snake1
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.SetCursorPosition(30, 10);
-                    Console.WriteLine("GAME OVER :) ");
+                    Console.WriteLine("GAME OVER," + s + "!");
                     Console.ReadKey();
                     isAlive = false;
                 }
@@ -71,23 +70,20 @@ namespace snake1
                     snake.body.Add(new Point(0, 0));
                     while (food.IscollisionwithObj(snake) || food.IscollisionwithObj(wall))
                         food.Generate();
-                    if (snake.body.Count % 4 == 0)
+                    if (snake.body.Count % 3 == 0)
                     {
                         level++;
                         wall.NextLevel();
                         speed = Math.Max(speed - 1, 1);
                     }
                 }
-
-
                 Draw();
                 Console.SetCursorPosition(20, 20);
                 Console.Write("Username:" + s + "    ");
                 Console.Write("Score:" + score + "    ");
                 Console.Write("Level:" + level + "    ");
                 Thread.Sleep(speed);
-            }
-
+            } 
         }
 
         public void Start()
@@ -116,10 +112,9 @@ namespace snake1
                 }
                 if(keyInfo.Key == ConsoleKey.S)
                 {
-                    snake.Serialization("snake.xml");
-                    wall.Serialization("wall.xml");
-                    food.Serialization("food.xml");
-
+                    snake.Serialize(snake);
+                    wall.Serialize(wall);
+                    food.Serialize(food);
                 }
                 if (keyInfo.Key == ConsoleKey.Escape)
                 {

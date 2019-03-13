@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace snake1
 {
@@ -28,6 +30,13 @@ namespace snake1
             int x = random.Next(1, Console.WindowWidth);
             body[0].x = x;
             body[0].y = y;
+        }
+        public void Serialize(Food food)
+        {
+            FileStream fs = new FileStream("food.xml", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            XmlSerializer xml = new XmlSerializer(typeof(Food));
+            xml.Serialize(fs, food);
+            fs.Close();
         }
     }
 }
